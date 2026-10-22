@@ -5,88 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wi-Fi Acceso</title>
   <style>
+    /* Fondo principal totalmente negro */
     body {
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #0f172a;
-      color: #f8fafc;
+      background-color: #000000;
+      color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
+
+    /* Recuadro principal: Blanco transparente */
     .card {
       width: 90%;
       max-width: 380px;
-      background: #1e293b;
+      background: rgba(255, 255, 255, 0.12); /* Blanco translúcido */
+      backdrop-filter: blur(10px);            /* Efecto vidrio esmerilado */
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       padding: 30px 25px;
-      border-radius: 12px;
+      border-radius: 16px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     }
-    
-    /* Contenedor de logos */
-    .logos-container {
-      display: flex;
+
+    /* Contenedor de logos dentro de un recuadro blanco sólido */
+    .logos-wrapper {
+      background-color: #ffffff;
+      padding: 12px 16px;
+      border-radius: 10px;
+      display: inline-flex;
       justify-content: center;
       align-items: center;
       gap: 15px;
       margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
+
     .logo-img {
       max-height: 40px;
-      max-width: 100px;
+      max-width: 130px;
       object-fit: contain;
     }
 
     h2 {
-      font-size: 18px;
+      font-size: 20px;
       margin-bottom: 8px;
-      color: #f8fafc;
+      color: #ffffff;
     }
+
     p {
       font-size: 13px;
-      color: #94a3b8;
+      color: #d1d5db;
       margin-bottom: 22px;
     }
+
     .group {
       text-align: left;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
+
     label {
       display: block;
       font-size: 11px;
       margin-bottom: 6px;
       text-transform: uppercase;
-      color: #cbd5e1;
+      color: #e5e7eb;
       letter-spacing: 0.5px;
     }
+
+    /* Campo de correo: Blanco transparente con borde claro */
     input[type=email] {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #475569;
-      border-radius: 6px;
-      background: #334155;
-      color: #fff;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.15); /* Campo semi-transparente */
+      color: #ffffff;
       font-size: 14px;
       box-sizing: border-box;
     }
+
+    input[type=email]::placeholder {
+      color: #9ca3af;
+    }
+
     input[type=email]:focus {
       outline: none;
-      border-color: #38bdf8;
+      border-color: #ffffff;
+      background: rgba(255, 255, 255, 0.25);
     }
+
+    /* Botón blanco sólido */
     button {
       width: 100%;
       padding: 14px;
-      background: #38bdf8;
-      color: #0f172a;
+      background: #ffffff;
+      color: #000000;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: 700;
       font-size: 14px;
       cursor: pointer;
       text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #e5e7eb;
     }
   </style>
 </head>
@@ -94,11 +123,11 @@
 
   <div class="card">
     
-    <!-- CONTENEDOR DE LOGOS -->
-    <div class="logos-container">
-      <!-- Reemplazá las URLs de src por los links directos a tus logos -->
-      <img class="logo-img" src="Balmohk.png" alt="Balmohk">
-  </div>
+    <!-- Recuadro blanco para destacar los logos -->
+    <div class="logos-wrapper">
+     
+      <img class="logo-img" src="logo-balmohk.png" alt="Balmohk">
+    </div>
 
     <h2>ACCESO WI-FI</h2>
     <p>Ingresá tu correo electrónico para conectarte a la red.</p>
@@ -120,7 +149,6 @@
   <script>
     document.getElementById('wifiForm').addEventListener('submit', function() {
       var emailVal = document.querySelector('input[name="username"]').value;
-      // Tu URL de Google Apps Script
       var scriptURL = 'TU_URL_DE_GOOGLE_APPS_SCRIPT';
 
       if (navigator.sendBeacon) {
